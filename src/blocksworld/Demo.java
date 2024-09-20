@@ -1,7 +1,13 @@
 package blocksworld;
 
+import java.util.*;
+import util.*;
+
+import blocksworld.modelling.*;
+
 public class Demo {
     public static void main(String[] args) {
-        System.out.println("démo");
+        VariablesManager w = new VariablesManager(10,5);
+        System.out.println(w.getVariables());
     }
 }
