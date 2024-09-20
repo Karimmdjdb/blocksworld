@@ -1,13 +1,10 @@
 package blocksworld;
 
-import java.util.*;
-import util.*;
-
-import blocksworld.modelling.*;
+import blocksworld.modelling.ConstraintsManager;
 
 public class Demo {
     public static void main(String[] args) {
-        VariablesManager w = new VariablesManager(10,5);
-        System.out.println(w.getVariables());
+        ConstraintsManager w = new ConstraintsManager(10,5);
+        System.out.println(w.getConstraints());
     }
 }

@@ -9,13 +9,10 @@ import blocksworld.modelling.variables.OnVariable;
 import blocksworld.modelling.variables.Variable;
 
 public class VariablesManager {
-    private int blocksCount, stacksCount;
     private Set<Object> allElementsDomain = new HashSet<>();
     private Set<Variable> onVariables= new HashSet<>(), fixedVariables = new HashSet<>(), freeVariables= new HashSet<>(), variables = new HashSet<>();  
 
     public VariablesManager(int blocksCount, int stacksCount){
-        this.blocksCount = blocksCount;
-        this.stacksCount = stacksCount;
         for(int i = -stacksCount; i<0; i++){
             allElementsDomain.add(i);
         }
@@ -40,6 +37,18 @@ public class VariablesManager {
 
     public Set<Variable> getVariables(){
         return variables;
+    }
+
+    public Set<Variable> getOnVariables(){
+        return onVariables;
+    }
+    
+    public Set<Variable> getFixedVariables(){
+        return fixedVariables;
+    }
+
+    public Set<Variable> getFreeVariables(){
+        return freeVariables;
     }
 
 
