@@ -1,4 +1,4 @@
-package blocksworld.modelling;
+package blocksworld.modelling.providers;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,11 +8,11 @@ import blocksworld.modelling.variables.FreeVariable;
 import blocksworld.modelling.variables.OnVariable;
 import blocksworld.modelling.variables.Variable;
 
-public class VariablesManager {
+public class VariablesProvider {
     private Set<Object> allElementsDomain = new HashSet<>();
     private Set<Variable> onVariables= new HashSet<>(), fixedVariables = new HashSet<>(), freeVariables= new HashSet<>(), variables = new HashSet<>();  
 
-    public VariablesManager(int blocksCount, int stacksCount){
+    public VariablesProvider(int blocksCount, int stacksCount){
         for(int i = -stacksCount; i<0; i++){
             allElementsDomain.add(i);
         }

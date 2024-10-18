@@ -13,4 +13,9 @@ public class OnVariable extends Variable{
         newDomain.remove(id);
         return newDomain;
     }
+
+    @Override
+    public String toString(){
+        return String.format("On%d", getId()); 
+    }
 }

@@ -31,11 +31,6 @@ public abstract class Variable {
 
     @Override
     public int hashCode(){
-        return id;
-    }
-
-    @Override
-    public String toString(){
-        return String.format("<%s %d %s>", this.getClass().getSimpleName(), id, getDomain().toString()); 
+        return id + this.getClass().getName().hashCode();
     }
 }

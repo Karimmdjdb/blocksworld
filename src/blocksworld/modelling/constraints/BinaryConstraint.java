@@ -1,11 +1,10 @@
 package blocksworld.modelling.constraints;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import blocksworld.modelling.variables.Variable;
 
-public abstract class BinaryConstraint implements Constraint{
+public abstract class BinaryConstraint extends AbstractConstraint{
     
     protected Variable v1, v2;
 
@@ -16,10 +15,7 @@ public abstract class BinaryConstraint implements Constraint{
 
     @Override
     public Set<Variable> getScope() {
-        Set<Variable> scope = new HashSet<>();
-        scope.add(v1);
-        scope.add(v2);
-        return scope;
+        return Set.of(v1, v2);
     }
 
     @Override

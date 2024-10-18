@@ -1,19 +1,14 @@
-package blocksworld.modelling;
+package blocksworld.modelling.providers;
 
-import java.util.Set;
-import java.util.HashSet;
-import blocksworld.modelling.constraints.Constraint;
 import blocksworld.modelling.constraints.NonOverlappingConstraint;
 import blocksworld.modelling.constraints.PileOccupancyConstraint;
 import blocksworld.modelling.constraints.SupportFixedConstraint;
 import blocksworld.modelling.variables.Variable;
 
-public class ConstraintsManager {
-    private VariablesManager vm;
-    private Set<Constraint> constraints = new HashSet<>();
+public class GeneralConstraintsProvider extends AbstractConstraintsProvider{
 
-    public ConstraintsManager(int blocksCount, int stacksCount){
-        vm = new VariablesManager(blocksCount, stacksCount);
+    public GeneralConstraintsProvider(int blocksCount, int stacksCount){
+        super(blocksCount, stacksCount);
         for(Variable onB : vm.getOnVariables()){
             // création des contraintes de non-chevauchement
             for(Variable onB2 : vm.getOnVariables()){
@@ -28,9 +23,5 @@ public class ConstraintsManager {
                 constraints.add(new PileOccupancyConstraint(onB, freeP));
             }
         }
-    }
-
-    public Set<Constraint> getConstraints(){
-        return constraints;
     }
 }

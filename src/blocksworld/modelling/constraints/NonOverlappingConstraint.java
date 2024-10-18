@@ -12,22 +12,22 @@ public class NonOverlappingConstraint extends BinaryConstraint{
     }
 
     @Override
-    public boolean isSatisfiedBy(Map<Variable, Object> instantiations) {
-        for(Variable var : getScope()){
-            if(!instantiations.containsKey(var)) throw new IllegalArgumentException();
-        }
-        return instantiations.get(v1).equals(instantiations.get(v2));
+    public boolean isSatisfiedBy(Map<Variable, Object> instanciations) {
+        checkIfScopeIsTreated(instanciations);
+        return !instanciations.get(v1).equals(instanciations.get(v2));
     }
 
+    // on redéfinit la méthode équals car ici l'ordre des variables ne compte pas, non-overlapping(v1, v2) est équivalent à non-overlapping(v2, v1)
     @Override
     public boolean equals(Object other) {
         if(ClassComparator.hardComparaison(this, other)){
-            NonOverlappingConstraint casterOther = (NonOverlappingConstraint) other;
-            return (v1.equals(casterOther.v1) || v1.equals(casterOther.v2)) && (v2.equals(casterOther.v1) || v2.equals(casterOther.v2));
+            NonOverlappingConstraint castedOther = (NonOverlappingConstraint) other;
+            return (v1.equals(castedOther.v1) || v1.equals(castedOther.v2)) && (v2.equals(castedOther.v1) || v2.equals(castedOther.v2));
         }
         return false;
     }
 
+    // même éxplication que pour equals
     @Override
     public int hashCode() {
         return v1.hashCode() + v2.hashCode();

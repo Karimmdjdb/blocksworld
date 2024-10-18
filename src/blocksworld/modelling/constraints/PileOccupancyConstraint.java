@@ -11,11 +11,9 @@ public class PileOccupancyConstraint extends BinaryConstraint{
     }
 
     @Override
-    public boolean isSatisfiedBy(Map<Variable, Object> instantiations) {
-        for(Variable var : getScope()){
-            if(!instantiations.containsKey(var)) throw new IllegalArgumentException();
-        }
-        return instantiations.get(v1).equals(v2.getId()) && !(Boolean)instantiations.get(v2);
+    public boolean isSatisfiedBy(Map<Variable, Object> instanciations) {
+        checkIfScopeIsTreated(instanciations);
+        return instanciations.get(v1).equals(v2.getId()) && !(Boolean)instanciations.get(v2);
     }
 
     
