@@ -9,10 +9,10 @@ public class RegularityConstraintsProvider extends AbstractConstraintsProvider {
         super(blocksCount, stacksCount);
         // création des contraintes de régularité
         for(Variable onB : vm.getOnVariables()){
-                for(Variable onB2 : vm.getOnVariables()){
-                    if(onB.getId() != onB2.getId()) constraints.add(new ConstantGapConstraint(onB, onB2));
-                }
+            for(Variable onB2 : vm.getOnVariables()){
+                if(onB.getId() != onB2.getId()) constraints.add(new ConstantGapConstraint(onB, onB2));
             }
+        }
     }
 
 }

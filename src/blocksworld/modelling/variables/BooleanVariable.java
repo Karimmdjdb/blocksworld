@@ -1,7 +1,6 @@
 package blocksworld.modelling.variables;
 
 import java.util.Set;
-import java.util.HashSet;
 
 public abstract class BooleanVariable extends Variable{
     public BooleanVariable(int id){
@@ -9,9 +8,6 @@ public abstract class BooleanVariable extends Variable{
     }
 
     public static Set<Object> createBooleanDomain(){
-        Set<Object> booleanDomain = new HashSet<>();
-        booleanDomain.add(false);
-        booleanDomain.add(true);
-        return booleanDomain;
+        return Set.of(true, false);
     }
 }
