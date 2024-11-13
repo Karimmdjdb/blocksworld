@@ -25,6 +25,4 @@ public class MisplacedHeuristic implements Heuristic {
         }
         return cost;
     }
-
-    
 }

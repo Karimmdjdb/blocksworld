@@ -7,6 +7,6 @@ public class FreeVariable extends BooleanVariable{
 
     @Override
     public String toString(){
-        return String.format("Free%d", getId()); 
+        return String.format("Free%d", getId());
     }
 }

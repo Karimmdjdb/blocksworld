@@ -6,7 +6,7 @@ import blocksworld.modelling.variables.FixedVariable;
 import blocksworld.modelling.variables.OnVariable;
 
 public class BlocToBlocMovement extends Movement {
-    
+
     public BlocToBlocMovement(int subject, int from, int to) {
         super();
         precondition = Map.of(

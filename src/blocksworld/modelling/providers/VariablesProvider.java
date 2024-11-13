@@ -42,7 +42,7 @@ public class VariablesProvider {
     public Set<Variable> getOnVariables(){
         return onVariables;
     }
-    
+
     public Set<Variable> getFixedVariables(){
         return fixedVariables;
     }

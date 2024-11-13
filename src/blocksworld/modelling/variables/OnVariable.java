@@ -16,6 +16,6 @@ public class OnVariable extends Variable{
 
     @Override
     public String toString(){
-        return String.format("On%d", getId()); 
+        return String.format("On%d", getId());
     }
 }

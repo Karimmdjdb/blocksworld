@@ -32,7 +32,4 @@ public class NonOverlappingConstraint extends BinaryConstraint{
     public int hashCode() {
         return v1.hashCode() + v2.hashCode();
     }
-
-    
-    
 }

@@ -18,7 +18,6 @@ import blocksworld.planning.actions.Action;
 import blocksworld.planning.goals.BasicGoal;
 import blocksworld.planning.goals.Goal;
 import blocksworld.planning.heuristics.BlockedMisplacedHeuristic;
-import blocksworld.planning.heuristics.MisplacedHeuristic;
 import blocksworld.planning.planners.AStarPlanner;
 import blocksworld.planning.planners.BFSPlanner;
 import blocksworld.planning.planners.DFSPlanner;
@@ -42,7 +41,7 @@ public class Demo4 {
             System.out.println("paramétres invalides.\nil faut spécifier un paramétre mode qui peut prendre les valeurs entre 1 et 4\n\t- 1 : DFS.\n\t- 2 : BFS.\n\t- 3 : Dijkstra.\n\t- 4 : A*.");
             return;
         }
-        
+
         Set<Object> allElementsDomain = new HashSet<>();
         for(int i = -m; i<0; i++){
             allElementsDomain.add(i);
@@ -63,7 +62,7 @@ public class Demo4 {
         // récupération des actions possibles
         MovementsProvider mp = new MovementsProvider(n, m);
         Set<Action> actions = mp.getActions();
-        
+
         // création de l'instanciation finale et du but
         Map<Variable, Object> end = createInstanciation(
             List.of(
@@ -73,7 +72,7 @@ public class Demo4 {
             ), n, m
         );
         Goal goal = new BasicGoal(end);
-                
+
 
         switch (mode) {
             case 1:
@@ -86,7 +85,7 @@ public class Demo4 {
                 resolveInGUI(new DijkstraPlanner(start, actions, goal), n);
                 break;
             case 4:
-                resolveInGUI(new AStarPlanner(start, actions, goal, new BlockedMisplacedHeuristic(goal)), n);        
+                resolveInGUI(new AStarPlanner(start, actions, goal, new BlockedMisplacedHeuristic(goal)), n);
                 break;
             default:
                 break;
@@ -157,7 +156,7 @@ public class Demo4 {
             state=a.successor((Map<Variable, Object>)state);
             component.setState(makeBWState(state, n));
         }
-        System.out.println("Simulation of plan: done.");
+        System.out.println(String.format("Simulation of plan with %s algorithm: done.", planner.getAlgo()));
     }
 }
 

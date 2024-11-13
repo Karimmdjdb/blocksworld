@@ -6,5 +6,5 @@ import blocksworld.modelling.variables.Variable;
 
 public interface Constraint {
     public Set<Variable> getScope();
-    public boolean isSatisfiedBy(Map<Variable, Object> instanciations);    
+    public boolean isSatisfiedBy(Map<Variable, Object> instanciations);
 }

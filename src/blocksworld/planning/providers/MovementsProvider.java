@@ -53,6 +53,4 @@ public class MovementsProvider implements ActionsProvider {
     public Set<Action> getActions() {
         return movements;
     }
-
-    
 }

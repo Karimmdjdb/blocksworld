@@ -9,11 +9,9 @@ public abstract class UnaryConstraint extends AbstractConstraint {
     public UnaryConstraint(Variable v) {
         this.v = v;
     }
-    
+
     @Override
     public Set<Variable> getScope() {
         return Set.of(v);
     }
-    
-    
 }

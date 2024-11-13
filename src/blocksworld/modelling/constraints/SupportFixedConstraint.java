@@ -15,5 +15,4 @@ public class SupportFixedConstraint extends BinaryConstraint{
         checkIfScopeIsTreated(instanciations);
         return instanciations.get(v1).equals(v2.getId()) && (Boolean)instanciations.get(v2);
     }
-    
 }

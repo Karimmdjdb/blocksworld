@@ -7,6 +7,6 @@ public class FixedVariable extends BooleanVariable{
 
     @Override
     public String toString(){
-        return String.format("Fixed%d", getId()); 
+        return String.format("Fixed%d", getId());
     }
 }

@@ -31,6 +31,4 @@ public class BlockedMisplacedHeuristic implements Heuristic {
         }
         return cost;
     }
-
-    
 }

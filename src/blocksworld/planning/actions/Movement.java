@@ -8,7 +8,7 @@ import java.util.Set;
 import blocksworld.modelling.variables.Variable;
 
 public abstract class Movement implements Action {
-    
+
     protected Map<Variable, Object> precondition, effect;
     private int cost;
     protected static Set<Object> globalOnDomain;
@@ -48,6 +48,4 @@ public abstract class Movement implements Action {
             globalOnDomain.add(i);
         }
     }
-
-
 }

@@ -33,7 +33,7 @@ public class BFSPlanner implements Planner, Soundable{
         Map<Map<Variable, Object>, Action> plan = new HashMap<>();
         Set<Map<Variable, Object>> closed = new HashSet<>();
         closed.add(initialState);
-        Queue<Map<Variable, Object>> open = new LinkedList<>();    
+        Queue<Map<Variable, Object>> open = new LinkedList<>();
         open.add(initialState);
         father.put(initialState, null);
         if(goal.isSatisfiedBy(initialState)) return new ArrayList<>();

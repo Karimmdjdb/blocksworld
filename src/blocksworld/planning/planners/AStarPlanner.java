@@ -114,6 +114,4 @@ public class AStarPlanner implements Planner, Soundable{
     public String getAlgo() {
         return "A*";
     }
-
-    
 }

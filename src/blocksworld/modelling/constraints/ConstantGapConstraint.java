@@ -5,7 +5,6 @@ import java.util.Map;
 import blocksworld.modelling.variables.Variable;
 
 public class ConstantGapConstraint extends BinaryConstraint {
-    
     public ConstantGapConstraint(Variable v1, Variable v2) {
         super(v1, v2);
     }

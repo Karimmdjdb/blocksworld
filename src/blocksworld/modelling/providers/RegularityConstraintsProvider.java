@@ -4,7 +4,7 @@ import blocksworld.modelling.constraints.ConstantGapConstraint;
 import blocksworld.modelling.variables.Variable;
 
 public class RegularityConstraintsProvider extends AbstractConstraintsProvider {
-    
+
     public RegularityConstraintsProvider(int blocksCount, int stacksCount) {
         super(blocksCount, stacksCount);
         // création des contraintes de régularité

@@ -6,7 +6,7 @@ import util.ClassComparator;
 public abstract class Variable {
     private int id;
     private Set<Object> domain;
-    
+
     public Variable(int id, Set<Object> domain){
         this.id = id;
         this.domain = domain;
