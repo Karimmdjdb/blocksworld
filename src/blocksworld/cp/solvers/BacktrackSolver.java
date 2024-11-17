@@ -32,16 +32,21 @@ public class BacktrackSolver extends AbstractSolver {
         // itération sur les valeurs possibles.
         for(Object value : var.getDomain()) {
             // on crée une nouvelle instanciation = partInstanciation U (var : value).
-            Map<Variable, Object> newInstantiation = new HashMap<>(partInstanciation);
-            newInstantiation.put(var, value);
+            Map<Variable, Object> newInstanciation = new HashMap<>(partInstanciation);
+            newInstanciation.put(var, value);
 
-            if(isConsistent(newInstantiation)) { // si la nouvelle instanciation est consistante on continue à explorer.
-                Map<Variable, Object> next = bt(newInstantiation, uninstanciatedVars);
+            if(isConsistent(newInstanciation)) { // si la nouvelle instanciation est consistante on continue à explorer.
+                Map<Variable, Object> next = bt(newInstanciation, uninstanciatedVars);
                 if(next != null) return next;
             }
         }
         // dans le cas ou aucune valeur n'a donné une instantiation satisfaisante on met fin à la recherche.
         uninstanciatedVars.add(var);
         return null;
+    }
+
+    @Override
+    public String getAlgo() {
+        return "Backtrack";
     }
 }

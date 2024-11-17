@@ -1,6 +1,7 @@
 package blocksworld.cp.solvers;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -26,19 +27,15 @@ public class HeuristicMACSolver extends AbstractMACSolver {
     protected Map<Variable, Object> helper(Map<Variable, Object> partInstanciation, LinkedList<Variable> uninstanciatedVars, Map<Variable, Set<Object>> domainsEvo) {
         if(uninstanciatedVars.isEmpty()) return partInstanciation;
 
-        // filatrage et réduction des domaines avant le début effectif la recherche par arc cohérence.
-        ArcConsistency ac = new ArcConsistency(constraints);
-        if(!ac.ac1(domainsEvo)) return null;
-
         // recherche d'une solution.
-        Variable v = variableHeuristic.best(variables, domainsEvo);  // séléction de la meilleure variable au sens de l'heuristique de variable utilisée.
+        Variable v = variableHeuristic.best(new HashSet<>(uninstanciatedVars), domainsEvo);  // séléction de la meilleure variable au sens de l'heuristique de variable utilisée.
         uninstanciatedVars.remove(v);
 
-        for(Object value : valueHeuristic.ordering(v, domainsEvo.get(v))) { // pour chaque valeur du domaine ordonné au sens de l'heuristique de valeurs utilsiée.
+        for(Object value : valueHeuristic.ordering(v, domainsEvo.get(v))) { // pour chaque valeur du domaine ordonné au sens de l'heuristique de valeurs utilisée.
             // on l'ajoute à l'instanciation partielle.
             Map<Variable, Object> newInstanciation = new HashMap<>(partInstanciation);
             newInstanciation.put(v, value);
-            if(isConsistent(newInstanciation)) { // si la nouvelle instanciation est consistance on la garde et on continue.
+            if(isConsistent(newInstanciation)) { // si la nouvelle instanciation est consistante on la garde et on continue.
                 Map<Variable, Object> next = helper(newInstanciation, uninstanciatedVars, domainsEvo);
                 if(next != null) return next;
             }
@@ -47,4 +44,9 @@ public class HeuristicMACSolver extends AbstractMACSolver {
         uninstanciatedVars.offer(v);
         return null;
     }
+
+        @Override
+        public String getAlgo() {
+            return "MAC (heuristic)";
+        }
 }

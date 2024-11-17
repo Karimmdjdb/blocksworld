@@ -26,6 +26,8 @@ import blocksworld.planning.providers.MovementsProvider;
 public class Demo3 {
     public static void main(String[] args) {
 
+        System.out.println("Demo 3 - Comparaison des algorithmes de planification");
+
         int n = 5, m = 3;
 
 
@@ -88,13 +90,13 @@ public class Demo3 {
         ((Soundable)ast).activateNodeCount(true);
         timer = System.currentTimeMillis();
         List<Action> astPlan = ast.plan();
-        System.out.println(String.format("* le planneur A* 1 a trouvé une solution\n\t> avec l'heuristique :\n\t\t- bloc mal placé (+1).\n\t> de %d étapes.\n\t> en explorant %d noeuds.\n\t> en %.3f secondes.\n", astPlan.size(), ((Soundable)ast).getNodeCount(), (float)(System.currentTimeMillis()-timer)/1000));
+        System.out.println(String.format("* le planneur A* a trouvé une solution\n\t> avec l'heuristique :\n\t\t- bloc mal placé (+1).\n\t> de %d étapes.\n\t> en explorant %d noeuds.\n\t> en %.3f secondes.\n", astPlan.size(), ((Soundable)ast).getNodeCount(), (float)(System.currentTimeMillis()-timer)/1000));
 
         Planner ast2 = new AStarPlanner(start, actions, goal, new BlockedMisplacedHeuristic(goal));
         ((Soundable)ast2).activateNodeCount(true);
         timer = System.currentTimeMillis();
         List<Action> ast2Plan = ast2.plan();
-        System.out.println(String.format("* le planneur A* 2 a trouvé une solution\n\t> avec l'heuristique :\n\t\t- bloc mal placé (+1).\n\t\t- bloc mal placé avec au moins un bloc au dessus (+2).\n\t> de %d étapes.\n\t> en explorant %d noeuds.\n\t> en %.3f secondes.\n", ast2Plan.size(), ((Soundable)ast2).getNodeCount(), (float)(System.currentTimeMillis()-timer)/1000));
+        System.out.println(String.format("* le planneur A* a trouvé une solution\n\t> avec l'heuristique :\n\t\t- bloc mal placé (+1).\n\t\t- bloc mal placé avec au moins un bloc au dessus (+2).\n\t> de %d étapes.\n\t> en explorant %d noeuds.\n\t> en %.3f secondes.\n", ast2Plan.size(), ((Soundable)ast2).getNodeCount(), (float)(System.currentTimeMillis()-timer)/1000));
     }
 
     private static Map<Variable, Object> createInstanciation(List<List<Integer>> stacks, int blocsCount, int stacksCount) {

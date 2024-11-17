@@ -10,6 +10,7 @@ import blocksworld.modelling.constraints.Constraint;
 
 // Solveur de CSP qui utilise l'algorithme de Maintien de Cohérence d'Arc.
 public class MACSolver extends AbstractMACSolver {
+
     public MACSolver(Set<Variable> variables, Set<Constraint> constraints) {
         super(variables, constraints);
     }
@@ -18,10 +19,6 @@ public class MACSolver extends AbstractMACSolver {
     protected Map<Variable, Object> helper(Map<Variable, Object> partInstanciation, LinkedList<Variable> uninstanciatedVars, Map<Variable, Set<Object>> domainsEvo) {
         if(uninstanciatedVars.isEmpty()) return partInstanciation;
 
-        // filatrage et réduction des domaines avant le début effectif la recherche par arc cohérence.
-        ArcConsistency ac = new ArcConsistency(constraints);
-        if(!ac.ac1(domainsEvo)) return null;
-
         // recherche d'une solution.
         Variable v = uninstanciatedVars.poll(); // choix d'une variable non instanciée (on prend juste la premèire).
 
@@ -29,7 +26,7 @@ public class MACSolver extends AbstractMACSolver {
             // on l'ajoute à l'instanciation partielle.
             Map<Variable, Object> newInstanciation = new HashMap<>(partInstanciation);
             newInstanciation.put(v, value);
-            if(isConsistent(newInstanciation)) { // si la nouvelle instanciation est consistance on la garde et on continue.
+            if(isConsistent(newInstanciation)) { // si la nouvelle instanciation est consistante on la garde et on continue.
                 Map<Variable, Object> next = helper(newInstanciation, uninstanciatedVars, domainsEvo);
                 if(next != null) return next;
             }
@@ -37,5 +34,10 @@ public class MACSolver extends AbstractMACSolver {
         // sinon on met fin à la recherche.
         uninstanciatedVars.offer(v);
         return null;
+    }
+
+    @Override
+    public String getAlgo() {
+        return "MAC";
     }
 }

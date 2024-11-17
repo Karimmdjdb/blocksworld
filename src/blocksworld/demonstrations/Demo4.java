@@ -38,9 +38,11 @@ public class Demo4 {
             mode = Integer.parseInt(args[0]);
             if(mode < 1 || mode > 4) throw new IllegalArgumentException();
         } catch(Exception e) {
-            System.out.println("paramétres invalides.\nil faut spécifier un paramétre mode qui peut prendre les valeurs entre 1 et 4\n\t- 1 : DFS.\n\t- 2 : BFS.\n\t- 3 : Dijkstra.\n\t- 4 : A*.");
+            System.out.println("paramétres invalides.\n\tparam 1 : algorithme de recherche (1 : DFS, 2 : BSF, 3 : Dijkstra, 4 : A*).");
             return;
         }
+
+        System.out.println("Demo 4 - Visualisation d'un plan trouvé");
 
         Set<Object> allElementsDomain = new HashSet<>();
         for(int i = -m; i<0; i++){
@@ -51,26 +53,26 @@ public class Demo4 {
         }
 
         // création de l'instanciation initiale
-        Map<Variable, Object> start = createInstanciation(
-            List.of(
-                List.of(-1, 0, 1, 2),
-                List.of(-2, 3),
-                List.of(-3, 4)
-                ), n, m
+        List<List<Integer>> startList = List.of(
+            List.of(-1, 0, 1, 2),
+            List.of(-2, 3),
+            List.of(-3, 4)
         );
+        Map<Variable, Object> start = createInstanciation(startList, n, m);
+        System.out.println("- Configuration initiale : " + startList);
 
         // récupération des actions possibles
         MovementsProvider mp = new MovementsProvider(n, m);
         Set<Action> actions = mp.getActions();
 
         // création de l'instanciation finale et du but
-        Map<Variable, Object> end = createInstanciation(
-            List.of(
-                List.of(-1),
-                List.of(-2, 2, 1, 0, 4, 3),
-                List.of(-3)
-            ), n, m
+        List<List<Integer>> endList = List.of(
+            List.of(-1),
+            List.of(-2, 2, 1, 0, 4, 3),
+            List.of(-3)
         );
+        Map<Variable, Object> end = createInstanciation(endList, n, m);
+        System.out.println("- Configuration finale : " + endList);
         Goal goal = new BasicGoal(end);
 
 
@@ -156,7 +158,7 @@ public class Demo4 {
             state=a.successor((Map<Variable, Object>)state);
             component.setState(makeBWState(state, n));
         }
-        System.out.println(String.format("Simulation of plan with %s algorithm: done.", planner.getAlgo()));
+        System.out.println(String.format("La simulation du plan calculé avec l'algorithme %s est terminée.", planner.getAlgo()));
     }
 }
 

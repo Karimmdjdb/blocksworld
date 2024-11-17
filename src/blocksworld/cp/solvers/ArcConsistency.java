@@ -63,15 +63,15 @@ public class ArcConsistency {
             boolean viable = false;
             for(Object value2 : s2) {
                 boolean allSatisfied = true;
+                Map<Variable, Object> instanciation = Map.of(v1, value1, v2, value2);
                 for(Constraint c : filteredConstraints) {
-                    Map<Variable, Object> instanciation = Map.of(v1, value1, v2, value2);
                     try {
                         if(!c.isSatisfiedBy(instanciation)) {
                             allSatisfied = false;
                             break;
                         }
                     }
-                    catch(Exception e) {}
+                    catch(Exception e) {System.err.println(e.getMessage());}
                 }
                 if(allSatisfied) {
                     viable = true;

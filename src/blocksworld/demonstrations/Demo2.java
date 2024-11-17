@@ -12,6 +12,8 @@ import blocksworld.modelling.variables.Variable;
 
 public class Demo2 {
     public static void main(String[] args) {
+        System.out.println("Demo 2 - Exemples de configurations");
+
         int n = 10, m = 5;
         RegularityConstraintsProvider rc = new RegularityConstraintsProvider(n, m);
         GrowingConstraintsProvider cc = new GrowingConstraintsProvider(n, m);
@@ -64,7 +66,7 @@ public class Demo2 {
         );
         int i = 1;
         for(Map<Variable, Object> instanciation : instanciations) {
-            System.out.println(String.format("Exemple %d ---------------------------------", i));
+            System.out.println(String.format("\nExemple %d ---------------------------------", i));
             System.out.println("- la configuration : " + instanciation);
             boolean reg = true;
             boolean gro = true;
@@ -75,9 +77,8 @@ public class Demo2 {
                 if(!c.isSatisfiedBy(instanciation)) gro = false;
             }
             System.out.println("\t* " + (reg ? "est réguliére" : "n'est pas réguliére"));
-            System.out.println("\t* " + (gro ? "est croisante" : "n'est pas croisante"));
+            System.out.println("\t* " + (gro ? "est croisante" : "n'est pas croissante"));
             i++;
-            System.out.print("\n\n");
         }
     }
 }

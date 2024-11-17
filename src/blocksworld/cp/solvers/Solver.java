@@ -6,4 +6,5 @@ import blocksworld.modelling.variables.Variable;
 public interface Solver {
     // Retourne une solution pour le CSP.
     public Map<Variable, Object> solve();
+    public String getAlgo();
 }

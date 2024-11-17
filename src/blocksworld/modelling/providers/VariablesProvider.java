@@ -9,24 +9,23 @@ import blocksworld.modelling.variables.OnVariable;
 import blocksworld.modelling.variables.Variable;
 
 public class VariablesProvider {
-    private Set<Object> allElementsDomain = new HashSet<>();
-    private Set<Variable> onVariables= new HashSet<>(), fixedVariables = new HashSet<>(), freeVariables= new HashSet<>(), variables = new HashSet<>();  
+    private Set<Variable> onVariables= new HashSet<>(), fixedVariables = new HashSet<>(), freeVariables= new HashSet<>(), variables = new HashSet<>();
 
     public VariablesProvider(int blocksCount, int stacksCount){
-        for(int i = -stacksCount; i<0; i++){
-            allElementsDomain.add(i);
-        }
-        for(int i = 0; i < blocksCount; i++){
+
+        // création du domaine général du monde
+        Set<Object> allElementsDomain = new HashSet<>();
+        for(int i = -stacksCount; i < blocksCount; i++){
             allElementsDomain.add(i);
         }
 
         for(Object id : allElementsDomain){
             Integer intId = (Integer) id;
-            if(intId < 0){
+            if(intId < 0) { // piles
                 freeVariables.add(new FreeVariable(intId));
                 variables.add(new FreeVariable(intId));
             }
-            else{
+            else { // blocs
                 onVariables.add(new OnVariable(intId, allElementsDomain));
                 variables.add(new OnVariable(intId, allElementsDomain));
                 fixedVariables.add(new FixedVariable(intId));

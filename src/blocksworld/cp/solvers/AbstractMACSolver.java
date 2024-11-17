@@ -19,10 +19,15 @@ public abstract class AbstractMACSolver extends AbstractSolver {
     @Override
     public Map<Variable, Object> solve() {
         // création de la variable d'évolution de domaine.
-        Map<Variable, Set<Object>> domains = new HashMap<>();
-        for(Variable v : variables) domains.put(v, new HashSet<>(v.getDomain()));
-        // appel à la méthone auxiliaire.
-        return helper(new HashMap<>(), new LinkedList<>(variables), domains);
+        Map<Variable, Set<Object>> domainsEvo = new HashMap<>();
+        for(Variable v : variables) domainsEvo.put(v, new HashSet<>(v.getDomain()));
+
+        // filatrage et réduction des domaines avant le début effectif la recherche par arc cohérence.
+        ArcConsistency ac = new ArcConsistency(constraints);
+        if(!ac.ac1(domainsEvo)) return null;
+
+        // appel à la méthone auxiliaire (recherche).
+        return helper(new HashMap<>(), new LinkedList<>(variables), domainsEvo);
     }
 
     protected abstract Map<Variable, Object> helper(Map<Variable, Object> partInstanciation, LinkedList<Variable> uninstanciatedVars, Map<Variable, Set<Object>> domainsEvo);

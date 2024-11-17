@@ -4,9 +4,10 @@ import java.util.Map;
 import blocksworld.modelling.variables.Variable;
 
 public abstract class AbstractConstraint implements Constraint{
-        public void checkIfScopeIsTreated(Map<Variable, Object> instanciations){
+        // lance une exception si au moins une variable du scope n'est pas couverte par l'instanciation
+        public void checkIfScopeIsTreated(Map<Variable, Object> instanciation){
             for(Variable var : getScope()){
-                if(!instanciations.containsKey(var)) throw new IllegalArgumentException();
+                if(!instanciation.containsKey(var)) throw new IllegalArgumentException();
             }
         }
 }
