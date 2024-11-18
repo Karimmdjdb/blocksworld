@@ -16,10 +16,7 @@ public class MovementsProvider implements ActionsProvider {
     public MovementsProvider(int blocksCount, int stacksCount) {
         Movement.setGlobalOnDomain(blocksCount, stacksCount);
         Set<Integer> ids = new HashSet<>();
-        for(int i = -stacksCount; i<0; i++){
-            ids.add(i);
-        }
-        for(int i = 0; i < blocksCount; i++){
+        for(int i = -stacksCount; i < blocksCount; i++){
             ids.add(i);
         }
         this.movements = new HashSet<>();

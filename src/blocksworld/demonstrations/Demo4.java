@@ -42,7 +42,7 @@ public class Demo4 {
             return;
         }
 
-        System.out.println("Demo 4 - Visualisation d'un plan trouvé");
+        System.out.println("Demo 4 - Visualisation d'un plan trouvé\n");
 
         Set<Object> allElementsDomain = new HashSet<>();
         for(int i = -m; i<0; i++){

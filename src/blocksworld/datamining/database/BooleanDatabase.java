@@ -20,7 +20,6 @@ public class BooleanDatabase {
     // Ajoute une transaction a la base de données.
     public void add(Set<BooleanVariable> transaction) {
         transactions.add(transaction);
-        items.addAll(transaction);
     }
 
     public Set<BooleanVariable> getItems() {

@@ -32,7 +32,7 @@ public class Apriori extends AbstractItemsetMiner {
 
     // Retourne un ensemble trié issu de la combinaison de deux ensembles triés d'items.
     public static SortedSet<BooleanVariable> combine(SortedSet<BooleanVariable> s1, SortedSet<BooleanVariable> s2) {
-        if(s1.size() == 0 || s1.size() != s2.size()) return null; // on vérifie si les deux ensembles ont la même taille.
+        if(s1.isEmpty() || s1.size() != s2.size()) return null; // on vérifie si les deux ensembles ont la même taille.
         if(!s1.subSet(s1.first(), s1.last()).equals(s2.subSet(s2.first(), s2.last()))) return null; // on compare s1[1..k-1] et s2[1..k-1] (car subSet exclut le toElement).
         if(s1.last().equals(s2.last())) return null; // on compare s1[k] et s2[k].
         SortedSet<BooleanVariable> sorted = new TreeSet<>(COMPARATOR);
@@ -53,8 +53,6 @@ public class Apriori extends AbstractItemsetMiner {
     }
 
     // Retourne l'ensemble de tous les Itemsets fréquents dans les transactions de la base de données,
-    // il doit certainement y avoir une solution plus efficace et moins complexe en temps mais on a construit cette algorithme uniquement à partir des définitions du cours,
-    // on essaiera de l'améliorer pour le rendu du fil rouge.
     @Override
     public Set<Itemset> extract(float minFrequency) {
         int level = 1;

@@ -26,7 +26,7 @@ import blocksworld.planning.providers.MovementsProvider;
 public class Demo3 {
     public static void main(String[] args) {
 
-        System.out.println("Demo 3 - Comparaison des algorithmes de planification");
+        System.out.println("Demo 3 - Comparaison des algorithmes de planification\n");
 
         int n = 5, m = 3;
 
