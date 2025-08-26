@@ -101,6 +101,9 @@ The **MovementsProvider** generates
   ```
   with `a = 1` DFS, `2` BFS, `3` Dijkstra, `4` A*.
 
+  #### Preview
+  ![blocks world preview](demo.gif)
+
 > [!WARNING]
 > The number of possible actions grows combinatorially (e.g. 1820 actions for 10 blocks and 5 piles).  
 > Planning becomes intractable quickly without heuristics or pruning.
@@ -206,3 +209,4 @@ Potential ways to address this include:
 ## License
 
 MIT
+
